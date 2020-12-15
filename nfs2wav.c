@@ -1,7 +1,5 @@
 /* C example that opens a game music file and records 10 seconds to "out.wav" */
 
-static char filename [] = "test.nsf"; /* opens this file (can be any music type) */
-
 #include "gme/gme.h"
 
 #include "Wave_Writer.h" /* wave_ functions for writing sound file */
@@ -10,20 +8,20 @@ static char filename [] = "test.nsf"; /* opens this file (can be any music type)
 
 void handle_error( const char* str );
 
-int main()
+int main(int argc, char* argv[])
 {
 	long sample_rate = 44100; /* number of samples per second */
 	int track = 0; /* index of track to play (0 = first) */
 	
 	/* Open music file in new emulator */
 	Music_Emu* emu;
-	handle_error( gme_open_file( filename, &emu, sample_rate ) );
+	handle_error( gme_open_file( argv[1], &emu, sample_rate ) );
 	
 	/* Start track */
 	handle_error( gme_start_track( emu, track ) );
 	
 	/* Begin writing to wave file */
-	wave_open( sample_rate, "out.wav" );
+	wave_open( sample_rate, argv[2] );
 	wave_enable_stereo();
 	
 	/* Record 10 seconds of track */
