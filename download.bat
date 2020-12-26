@@ -1,4 +1,4 @@
-set GME_VER=0.5.2
+set GME_VER=%1
 set DESTDIR=gem
 
 set URL="http://blargg.8bitalley.com/parodius/libs/Game_Music_Emu-%GME_VER%.zip"

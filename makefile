@@ -1,5 +1,3 @@
-.PHONY: default clean build run
-
 CC  = gcc
 CXX = g++
 
@@ -29,5 +27,10 @@ clean:
 	-rm $(OBJ)
 	-rm $(BIN)
 
+get:
+	download $(GME_VER)
+
 $(BIN): $(OBJ)
 	$(CXX) -o $@ $^
+
+.PHONY: default clean build run get
